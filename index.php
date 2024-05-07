@@ -18,16 +18,41 @@
         rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+
+
 </head>
 
 <body>
-    <?php
+    <?php  // Declarar variables
+    $all_posts = [
+        [
+            'id' => 1,
+            'title' => 'IA y Diseño Web: Creatividad Automatizada',
+            'excerpt' => 'Descubre cómo la inteligencia artificial está revolucionando el diseño web, generando contenido dinámico y recomendando diseños personalizados para cada usuario.',
+            'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae pulvinar turpis. Nam ut
+        arcu tellus. Morbi sit amet elit lacinia, tincidunt leo a, posuere mi. Mauris nec odio at quam lacinia consequat.
+        Fusce mattis orci ex, eget accumsan neque vehicula et. Vivamus consectetur tempor lacus, in tincidunt massa rutrum ut.
+        Pellentesque augue felis, iaculis eu interdum et, semper eu purus. Vestibulum a viverra justo.',
+            'published_on' => '2022-01-08 10:15:00',
+        ],
+        [
+            'id' => 2,
+            'title' => 'IA y Contenido Dinámico: La Evolución del Web Development',
+            'excerpt' => 'Explora cómo la inteligencia artificial está impulsando la generación de contenido dinámico, desde descripciones de productos hasta artículos de blog, en el desarrollo web moderno.',
+            'content' => 'Integer placerat hendrerit pharetra. Nunc eget enim vulputate, efficitur dolor pretium, pharetra
+        nulla. Proin mattis aliquam sem. Morbi vel mi ac magna consequat tempus vitae eget diam. Aliquam ac sapien a tortor
+        rutrum faucibus nec nec urna. Ut et nisl magna. Vivamus elit risus, rhoncus vitae elit suscipit, porta pulvinar justo.
+        Aliquam sodales urna eu scelerisque ultrices. Fusce et neque id risus gravida vestibulum a et urna. Curabitur aliquam
+        accumsan leo, pharetra tempus velit condimentum et. Donec dapibus faucibus lorem a tincidunt. Donec ultricies id metus
+        et aliquam. Vestibulum dapibus magna nec elit ultrices, ornare pretium nisi dictum.',
+            'published_on' => '2022-01-08 10:15:00',
+        ],
+    ];
 
-    // Declarar variables
-    $post_1_titulo = "Lorem ipsum dolor sit amet consectetur!";
-    $post_1_contenido = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut possimus aliquid consequuntur veritatis praesentium natus, dignissimos, suscipit voluptates quos eveniet iste architecto magnam reiciendis soluta eius, minus at? Minima, consequuntur.";
-    $post_2_titulo = "Lorem ipsum dolor sit amet consectetur!";
-    $post_2_contenido = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut possimus aliquid consequuntur veritatis praesentium natus, dignissimos, suscipit voluptates quos eveniet iste architecto magnam reiciendis soluta eius, minus at? Minima, consequuntur.";
+    $post_1_titulo = "IA y Diseño Web: Creatividad Automatizada";
+    $post_1_contenido = "Descubre cómo la inteligencia artificial está revolucionando el diseño web, generando contenido dinámico y recomendando diseños personalizados para cada usuario.";
+    $post_2_titulo = "IA y Contenido Dinámico: La Evolución del Web Development";
+    $post_2_contenido = "Explora cómo la inteligencia artificial está impulsando la generación de contenido dinámico, desde descripciones de productos hasta artículos de blog, en el desarrollo web moderno.";
     ?>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
@@ -49,7 +74,20 @@
         </div>
     </nav>
     <!-- Page Header-->
-    <header class="masthead" style="background-image: url('assets/img/header_inteligencia_artificial.webp')">
+    <header class="masthead" style="background-image: url('assets/img/header-3.jpg')">
+        <div class="container position-relative px-4 px-lg-5 d-flex align-items-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Inteligencia Artificial</h1>
+                    <span class="subheading">Aplicada al Desarrollo Web</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!--<header class="masthead" style="background-image: url('assets/img/header-3.jpg')">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -60,30 +98,31 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header>-->
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <!-- Post Content -->
-                <div class="content">
+                <div id="content" class="content">
                     <div class="posts">
                         <div class=post-1>
-                            <h2><?php echo $post_1_titulo ?></h2>
-                            <div><?php echo $post_1_contenido ?></div>
+                            <h2 class="post-title"><?php echo $all_posts[0]['title'];?></h2>
+                            <div class="post-content"><?php echo $all_posts[0]['excerpt'] ?></div>
                         </div>
                         <!-- Divider-->
                         <hr class="my-4" />
                         <div class=post-2>
-                            <h2><?php echo $post_2_titulo ?></h2>
-                            <div><?php echo $post_2_contenido ?></div>
+                        <h2 class="post-title"><?php echo $all_posts[1]['title'];?></h2>
+                            <div class="post-content"><?php echo $all_posts[1]['excerpt'] ?></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Pager-->
-                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older
-                        Posts →</a></div>
+                <br>
+                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"
+                        href="#!">Anteriores →</a></div>
             </div>
         </div>
     </div>
