@@ -65,7 +65,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="index.html">IA en el Desarrollo Web</a>
+            <a class="navbar-brand" href="index.php">IA en el Desarrollo Web</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -117,19 +117,26 @@
                 <hr class="my-4" />
                 <!-- Formulario -->
                 <div class="container">
-                    <h2>Formulario de Envío</h2>
-                    <form action="formulario.php" method="POST">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required><br><br>
-                        <label for="email">Correo electrónico:</label>
-                        <input type="email" id="email" name="email" required><br><br>
-                        <input type="submit" value="Enviar">
+                    <h2 class="mt-5">Formulario de Envío</h2>
+                    <form action="formulario.php" method="POST" class="mt-4">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <!--<div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>-->
+                        <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
                 </div>
-                <!-- Pager-->
+                <hr class="my-4" />
+
+                <!-- Pager
                 <br>
                 <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"
-                        href="#!">Anteriores →</a></div>
+                        href="#!">Anteriores →</a>
+                </div>-->
             </div>
         </div>
     </div>
