@@ -132,6 +132,17 @@
                 </div>
                 <hr class="my-4" />
 
+                <!-- Suma de los 1.000 primeros números -->
+                <?php
+                $suma = 0;
+
+                for ($i = 1; $i <= 1000; $i++) {
+                    $suma += $i;
+                }
+
+                echo "La suma de los primeros 1000 números enteros es: $suma";
+                ?>
+
                 <!-- Pager
                 <br>
                 <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"
