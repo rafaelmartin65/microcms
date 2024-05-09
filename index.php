@@ -23,7 +23,15 @@
 </head>
 
 <body>
-    <?php  // Declarar variables
+    <?php
+    error_reporting(E_ALL);
+    ini_set('disploay_errors', 1);
+
+    setlocale(LC_TIME, 'es', 'spa', 'es_ES');
+    date_default_timezone_set('Atlantic/Canary');
+
+
+    // Declarar variables
     $all_posts = [
         [
             'id' => 1,
@@ -86,19 +94,6 @@
     </header>
 
 
-
-    <!--<header class="masthead" style="background-image: url('assets/img/header-3.jpg')">
-        <div class="container position-relative px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <div class="site-heading">
-                        <h1>Inteligencia Artificial</h1>
-                        <span class="subheading">Aplicada al Desarrollo Web</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>-->
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -107,18 +102,30 @@
                 <div id="content" class="content">
                     <div class="posts">
                         <div class=post-1>
-                            <h2 class="post-title"><?php echo $all_posts[0]['title'];?></h2>
+                            <h2 class="post-title"><?php echo $all_posts[0]['title']; ?></h2>
                             <div class="post-content"><?php echo $all_posts[0]['excerpt'] ?></div>
                         </div>
                         <!-- Divider-->
                         <hr class="my-4" />
                         <div class=post-2>
-                        <h2 class="post-title"><?php echo $all_posts[1]['title'];?></h2>
+                            <h2 class="post-title"><?php echo $all_posts[1]['title']; ?></h2>
                             <div class="post-content"><?php echo $all_posts[1]['excerpt'] ?></div>
                         </div>
                     </div>
                 </div>
-
+                <!-- Divider-->
+                <hr class="my-4" />
+                <!-- Formulario -->
+                <div class="container">
+                    <h2>Formulario de Envío</h2>
+                    <form action="formulario.php" method="POST">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required><br><br>
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required><br><br>
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
                 <!-- Pager-->
                 <br>
                 <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"
@@ -126,6 +133,7 @@
             </div>
         </div>
     </div>
+
     <!-- Footer-->
     <footer class="border-top">
         <div class="container px-4 px-lg-5">
