@@ -82,7 +82,7 @@
         </div>
     </nav>
     <!-- Page Header-->
-    <header class="masthead" style="background-image: url('assets/img/header-3.jpg')">
+    <header class="masthead" style="background-image: url('assets/img/header-5.jpg')">
         <div class="container position-relative px-4 px-lg-5 d-flex align-items-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
@@ -101,16 +101,20 @@
                 <!-- Post Content -->
                 <div id="content" class="content">
                     <div class="posts">
-                        <div class=post-1>
-                            <h2 class="post-title"><?php echo $all_posts[0]['title']; ?></h2>
-                            <div class="post-content"><?php echo $all_posts[0]['excerpt'] ?></div>
-                        </div>
-                        <!-- Divider-->
-                        <hr class="my-4" />
-                        <div class=post-2>
-                            <h2 class="post-title"><?php echo $all_posts[1]['title']; ?></h2>
-                            <div class="post-content"><?php echo $all_posts[1]['excerpt'] ?></div>
-                        </div>
+                        <?php foreach ( $all_posts as $post ): ?>
+                            <article class="post">
+                                <header>
+                                    <h2 class="post-title">
+                                        <?php echo $post['title']; ?>
+                                    </h2>
+                                </header>
+                                <div class="post-content">
+                                    <?php echo $post['content']; ?>
+                                </div>
+                                <footer>
+                                </footer>
+                            </article>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <!-- Divider-->
