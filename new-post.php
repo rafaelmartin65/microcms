@@ -3,7 +3,13 @@
 
 <h2 class="text-center mb-4">Nuevo Post</h2>
 
-<form method="get" action="">
+<?php
+$error = false;
+ if ($error): ?>
+    <div class='error'>Error en el formulario</div>
+<?php endif; ?>
+
+<form method="post" action="">
     <label for="title">Título:</label><br>
     <input type="text" id="title" name="title" required><br><br>
 
