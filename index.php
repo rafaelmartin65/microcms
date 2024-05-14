@@ -1,3 +1,4 @@
+
 <?php require ('init.php'); ?>
 <?php require ('templates/header.php'); ?>
 <?php

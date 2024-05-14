@@ -25,19 +25,7 @@ if ( isset( $_POST['submit-new-post'] ) ) {
 	else {
 
         insert_post( $title, $excerpt, $content );
-		// Si no hay errores, prepara un nuevo post con los datos recibidos
-		//$new_post = [
-		//	'id' => 0,
-		//	'title' => $title,
-		//	'excerpt' => $excerpt,
-		//	'content' => $content,
-		//	'published_on' => date( 'Y-m-d H:i:s' ) // Establece la fecha y hora actual
-		//];
-
-        //$query = "INSERT INTO posts(title, excerpt, content, published_on) 
-        //VALUES('$title','$excerpt','$content','$published_on')";
-		// Finaliza la ejecución del script (esto es solo para fines de demostración)
-		//die( 'Formulario enviado' );
+        header('location:http://localhost:80/microcms/redireccionamiento/index.php?success=true');
 	}
 }
 ?>
