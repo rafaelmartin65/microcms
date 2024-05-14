@@ -1,6 +1,9 @@
+<?php require ('../init.php'); ?>
+<?php require ('../templates/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redireccionamiento</title>
@@ -11,3 +14,4 @@
     <?php endif;?>
 </body>
 </html>
+<?php require ('../templates/footer.php'); ?>
