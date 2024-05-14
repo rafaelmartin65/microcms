@@ -7,14 +7,26 @@
 // Declarar variables
 $all_posts = get_all_posts();
 
+// Variable para indicar si se ha encontrado el post
 $post_found = false;
-if (isset($_GET['view'])) {
-    $post_found = get_post($_GET['view']);
-    if ($post_found) {
+
+// Verifica si se ha recibido el parámetro 'view' en la URL
+if(isset($_GET['view'])){
+    // Construye la consulta SQL para seleccionar el post con el ID proporcionado
+    $query = 'SELECT * FROM posts WHERE ID='.$_GET['view'];
+
+    // Ejecuta la consulta SQL para obtener todos los posts
+    $result = mysqli_query($app_db, 'SELECT * FROM posts');
+
+    // Verifica si la consulta se ejecutó correctamente
+    if($result){
+        // Extrae el primer resultado como un array asociativo
+        $post_found = mysqli_fetch_assoc($result);
+        
+        // Crea un array que contiene solo el post encontrado
         $all_posts = [$post_found];
     }
 }
-
 ?>
 
 <div class="posts">

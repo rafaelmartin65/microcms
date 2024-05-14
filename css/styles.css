@@ -85,6 +85,10 @@
   box-sizing: border-box;
 }
 
+.header-bg{
+  height: 65rem;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -10676,6 +10680,7 @@ header.masthead {
   background-color: #6c757d;
   background-size: cover;
   background-attachment: scroll;
+  height: 60rem;
 }
 header.masthead:before {
   content: "";

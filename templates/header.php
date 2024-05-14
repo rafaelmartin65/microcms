@@ -17,7 +17,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
         rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/styles.css?v=<?php echo time();?>" rel="stylesheet" />
 
     
 </head>
@@ -43,7 +43,7 @@
         </div>
     </nav>
     <!-- Page Header-->
-    <header class="masthead" style="background-image: url('assets/img/header-5.jpg')">
+    <header class="masthead" style="background-image: url('assets/img/header-5.jpg'); height: 35rem">
         <div class="container position-relative px-4 px-lg-5 d-flex align-items-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
