@@ -11,21 +11,21 @@ $content = '';
 
 
 // Verifica si se ha enviado el formulario
-if ( isset( $_POST['submit-new-post'] ) ) {
+if (isset($_POST['submit-new-post'])) {
 	// Se ha enviado el formulario, entonces recopila los datos enviados
 	$title = $_POST['title'];
 	$excerpt = $_POST['excerpt'];
 	$content = $_POST['content'];
 
 	// Verifica si el título y el contenido no están vacíos
-	if ( empty( $title ) || empty( $content ) ) {
+	if (empty($title) || empty($content) || empty($excerpt)) {
 		// Si alguno de los campos está vacío, establece $error en true
 		$error = true;
-	}
-	else {
+	} else {
 
-        insert_post( $title, $excerpt, $content );
-        header('location:http://localhost:80/microcms/redireccionamiento/index.php?success=true');
+		insert_post($title, $excerpt, $content);
+		header('location:http://localhost:80/microcms/redireccionamiento/index.php?success=true');
+		die();
 	}
 }
 ?>
@@ -33,22 +33,33 @@ if ( isset( $_POST['submit-new-post'] ) ) {
 <h2 class="text-center mb-4">Nuevo Post</h2>
 
 <!-- Si hay un error, muestra un mensaje de error -->
-<?php if ($error): ?>  
-<div class="error">Error en el formulario, revise los campos rellenados</div>
+<?php if ($error): ?>
+	<div class="error">Error en el formulario, revise los campos rellenados</div>
 <?php endif; ?>
 
 <!-- Formulario para crear un nuevo post -->
-<form method="post" action="">
-    <label for="title">Título:</label><br>
-    <input type="text" id="title" name="title" required><br><br>
+<form class="container mt-4" method="post" action="">
+	<div class="form-group mb-2">
+		<label for="title" class="small">Título:</label><br>
+		<input type="text" class="form-control form-control-sm border border-dark rounded" id="title" name="title"
+			required>
+	</div>
 
-    <label for="excerpt">Extracto:</label><br>
-    <textarea id="excerpt" name="excerpt" rows="4" cols="50"></textarea><br><br>
+	<div class="form-group mb-2">
+		<label for="excerpt" class="small">Extracto:</label><br>
+		<textarea class="form-control border border-dark rounded" id="excerpt" name="excerpt" rows="2"
+			cols="50"></textarea>
+	</div>
 
-    <label for="content">Contenido:</label><br>
-    <textarea id="content" name="content" rows="8" cols="50"></textarea><br><br>
-
-    <input type="submit" name="submit-new-post" value="Nuevo post">
+	<div class="form-group mb-2">
+		<label for="content" class="small">Contenido:</label><br>
+		<textarea class="form-control border border-dark rounded" id="content" name="content" rows="4"
+			cols="50"></textarea>
+	</div>
+	<div class="d-flex justify-content-end"> <!-- Utilizando flexbox para alinear el botón a la derecha -->
+		<input class="btn btn-primary btn-sm rounded " type="submit" name="submit-new-post" value="Nuevo post">
+	</div>
 </form>
+
 
 <?php require ('templates/footer.php'); ?> <!-- Incluye el pie de página -->

@@ -12,6 +12,10 @@
     <?php if (isset($_GET['success'])):?>
     <div class="success">El Post ha sido creado</div>
     <?php endif;?>
+
+    <?php if (isset($_GET['delete-post'])):?>
+    <div class="delete">El Post ha sido borrado</div>
+    <?php endif;?>
 </body>
 </html>
 <?php require ('../templates/footer.php'); ?>

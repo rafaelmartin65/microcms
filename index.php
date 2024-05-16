@@ -7,7 +7,7 @@
 if (isset($_GET['delete-post'])) {
     $id = $_GET['delete-post'];  // Obtiene el ID del post a eliminar desde la URL
     delete_post($id);  // Llama a la función delete_post() para eliminar el post
-    redirect_to('index.php');  // Redirige al usuario a la página principal
+    header('location:http://localhost:80/microcms/redireccionamiento/index.php?');  // Redirige al usuario a la página principal
     die();  // Termina la ejecución del script
 }
 
@@ -50,7 +50,7 @@ if (isset($_GET['view'])) {
             $titulo_post = $post['title'];
 
             // nombre imagen sin espacios
-            $nombre_img = $id . '.jpg'; ?>
+            $nombre_img = $post['id'] . '.jpg'; ?>
 
             <div class="post-content">
                 <div class="row">
@@ -72,6 +72,9 @@ if (isset($_GET['view'])) {
                         <!-- Published date -->
                         <?php $fecha_formateada = date("d-m-Y", strtotime($post['published_on']));
                         echo "<p class='m-0'>Publicado el " . $fecha_formateada . "</p>"; ?>
+                    </div>
+                    <div class="delete-post">
+                        <a href="?delete-post=<?php echo $post['id'];?>">Eliminar Post</a>
                     </div>
                     <a class="btn btn-sm custom-color rounded-pill text-uppercase"
                         href="<?php echo 'detalle-post.php'; ?>">leer
