@@ -21,11 +21,20 @@ function get_all_posts()
 }
 
 /**
- * Inserta un nuevo post en la base de datos
+ * Inserta una nueva tarea
+ *
+ * @param $title
+ * @param $excerpt
+ * @param $content
  */
 function insert_post($title, $excerpt, $content)
 {
     global $app_db;
+
+    // Escapa las variables para prevenir inyección SQL
+    $title = mysqli_real_escape_string($app_db, $title);
+    $excerpt = mysqli_real_escape_string($app_db, $excerpt);
+    $content = mysqli_real_escape_string($app_db, $content);
 
     // Obtiene la fecha y hora actual
     $published_on = date('Y-m-d H:m:s');
@@ -47,8 +56,9 @@ function insert_post($title, $excerpt, $content)
 }
 
 /**
- * Busca y devuelve un post específico por su ID
+ * Busca y devuelve un sólo post
  * Si no lo encuentra, devuelve false
+ * @param $post_id
  */
 function get_post($post_id)
 {
@@ -68,4 +78,23 @@ function get_post($post_id)
 
     // Devuelve el resultado como un array asociativo
     return mysqli_fetch_assoc($result);
+}
+
+/**
+ * Elimina un post
+ *
+ * @param $id
+ */
+function delete_post( $id ) {
+	global $app_db;
+
+	// Convierte el ID a un entero para evitar inyección SQL
+	$id = intval($id);
+
+    // Verifica si la consulta se ejecutó correctamente
+	$result = mysqli_query( $app_db, "DELETE FROM posts WHERE id = $id" );
+	if ( ! $result ) {
+        // Si hay un error en la consulta, termina el script y muestra el mensaje de error
+		die( mysqli_error( $app_db ) );
+	}
 }

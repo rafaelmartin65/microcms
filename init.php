@@ -20,6 +20,7 @@ if ( $app_db === false ) {
 }
 
 require( 'inc/posts.php' );
+require( 'inc/helpers.php' );
 
 
 

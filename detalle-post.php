@@ -66,7 +66,7 @@ if (isset($_GET['view'])) {
                 <br>
                 <?php
                 // Construye nombre del archivo con el id del post para crear la pagina de detalle
-                // $nombre_archivo = 'detalle-post.php'; ?>
+                $nombre_archivo = 'detalle-post.php'; ?>
                 <div class="d-flex justify-content-between mb-4">
                     <div class="m-0">
                         <!-- Published date -->
@@ -74,7 +74,7 @@ if (isset($_GET['view'])) {
                         echo "<p class='m-0'>Publicado el " . $fecha_formateada . "</p>"; ?>
                     </div>
                     <a class="btn btn-sm custom-color rounded-pill text-uppercase"
-                        href="<?php echo 'detalle-post.php'; ?>">leer
+                        href="<?php echo $nombre_archivo; ?>">leer
                         más... →</a>
                 </div>
                 <hr class="my-4">
