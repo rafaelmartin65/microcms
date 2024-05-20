@@ -24,7 +24,7 @@ if (isset($_POST['submit-new-post'])) {
 	} else {
 
 		insert_post($title, $excerpt, $content);
-		redirect_to('location:http://localhost:80/microcms/index.php?success=true');
+		redirect_to('index.php?success=true');
 		die();
 	}
 }
