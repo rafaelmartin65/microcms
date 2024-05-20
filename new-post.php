@@ -42,22 +42,22 @@ if (isset($_POST['submit-new-post'])) {
 	<div class="form-group mb-2">
 		<label for="title" class="small">Título:</label><br>
 		<input type="text" class="form-control form-control-sm border border-dark rounded" id="title" name="title"
-			required>
+			required value="<?php echo $title; ?>">
 	</div>
 
 	<div class="form-group mb-2">
 		<label for="excerpt" class="small">Extracto:</label><br>
 		<textarea class="form-control border border-dark rounded" id="excerpt" name="excerpt" rows="2"
-			cols="50"></textarea>
+			cols="50"><?php echo htmlspecialchars($content, ENT_QUOTES, 'UTF-8'); ?></textarea>
 	</div>
 
 	<div class="form-group mb-2">
 		<label for="content" class="small">Contenido:</label><br>
 		<textarea class="form-control border border-dark rounded" id="content" name="content" rows="4"
-			cols="50"></textarea>
+			cols="50"><?php echo htmlspecialchars($excerpt, ENT_QUOTES, 'UTF-8'); ?></textarea>
 	</div>
 	<div class="d-flex justify-content-end"> <!-- Utilizando flexbox para alinear el botón a la derecha -->
-		<input class="btn btn-primary btn-sm rounded " type="submit" name="submit-new-post" value="Nuevo post">
+		<input class="btn btn-primary btn-sm rounded " type="submit" name="submit-new-post" value="<?php echo htmlspecialchars($title,ENT_QUOTES); ?>">
 	</div>
 </form>
 
