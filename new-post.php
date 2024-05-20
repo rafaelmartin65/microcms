@@ -24,7 +24,7 @@ if (isset($_POST['submit-new-post'])) {
 	} else {
 
 		insert_post($title, $excerpt, $content);
-		header('location:http://localhost:80/microcms/redireccionamiento/index.php?success=true');
+		redirect_to('location:http://localhost:80/microcms/index.php?success=true');
 		die();
 	}
 }
@@ -42,7 +42,7 @@ if (isset($_POST['submit-new-post'])) {
 	<div class="form-group mb-2">
 		<label for="title" class="small">Título:</label><br>
 		<input type="text" class="form-control form-control-sm border border-dark rounded" id="title" name="title"
-			required value="<?php echo $title; ?>">
+			required value="<?php echo htmlspecialchars($title, ENT_QUOTES); ?>">
 	</div>
 
 	<div class="form-group mb-2">
@@ -57,7 +57,7 @@ if (isset($_POST['submit-new-post'])) {
 			cols="50"><?php echo htmlspecialchars($excerpt, ENT_QUOTES, 'UTF-8'); ?></textarea>
 	</div>
 	<div class="d-flex justify-content-end"> <!-- Utilizando flexbox para alinear el botón a la derecha -->
-		<input class="btn btn-primary btn-sm rounded " type="submit" name="submit-new-post" value="<?php echo htmlspecialchars($title,ENT_QUOTES); ?>">
+		<input class="btn btn-primary btn-sm rounded " type="submit" name="submit-new-post" value="Nuevo Post">
 	</div>
 </form>
 

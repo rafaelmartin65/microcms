@@ -1,13 +1,17 @@
 <?php require ('init.php'); ?> <!-- Incluye el archivo de inicialización -->
-<?php require ('templates/header.php'); ?>  <!-- Incluye el encabezado de la página -->
+<?php require ('templates/header.php'); ?> <!-- Incluye el encabezado de la página -->
 
 
 <?php
 // Si se ha enviado un parámetro 'delete-post' en la URL
 if (isset($_GET['delete-post'])) {
     $id = $_GET['delete-post'];  // Obtiene el ID del post a eliminar desde la URL
+
+    if ( ! check_hash( 'delete-post-' . $id, $_GET['hash'] ) ) {
+		die( 'Hackeando, no?' );
+	}
     delete_post($id);  // Llama a la función delete_post() para eliminar el post
-    header('location:http://localhost:80/microcms/redireccionamiento/index.php?');  // Redirige al usuario a la página principal
+    redirect_to( 'index.php' );  // Redirige al usuario a la página principal
     die();  // Termina la ejecución del script
 }
 
@@ -47,7 +51,7 @@ if (isset($_GET['view'])) {
             </header>
             <?php
             // Obtener el título del post
-            $titulo_post = $post['title'];
+            //$titulo_post = $post['title'];
 
             // nombre imagen sin espacios
             $nombre_img = $post['id'] . '.jpg'; ?>
@@ -74,14 +78,42 @@ if (isset($_GET['view'])) {
                         echo "<p class='m-0'>Publicado el " . $fecha_formateada . "</p>"; ?>
                     </div>
                     <div class="delete-post">
-                        <a href="?delete-post=<?php echo $post['id'];?>">Eliminar Post</a>
+                        <a class="btn btn-primary"
+                            href="?delete-post=<?php echo $post['id']; ?>&hash=<?php echo generate_hash('delete-post-' . $post['id']); ?>">Eliminar
+                            Post</a>
+
+                        <?php if (isset($_GET['delete-post'])) {
+                            $id = $GET['delete-post'];
+
+                            if (!check_hash('delete-post' . $id.$_GET['hash'])){
+                                die('A mi me vas ahackear?');
+                            }else{
+                            delete_post($id);
+                            redirect_to ('index.php');
+                            die();
+                            }
+
+                            // Valida y sanea el ID para asegurarse de que sea un número entero
+                            $id = filter_var($id, FILTER_VALIDATE_INT);
+                            if ($id === false) {
+                                die('ID inválido.');
+                            }else{
+                                // Llama a la función para eliminar el post
+                            delete_post($id);
+
+                            // Redirecciona después de eliminar el post
+                            redirect_to( 'index.php' );  // Redirige al usuario a la página principal
+                            exit;
+                            }
+                        }?>
+                            
+                        
                     </div>
-                    <a class="btn btn-sm custom-color rounded-pill text-uppercase"
-                        href="<?php echo 'detalle-post.php'; ?>">leer
+                    <a href="<?php echo 'detalle-post.php'; ?>">leer
                         más... →</a>
                 </div>
                 <hr class="my-4">
         </article>
     <?php endforeach; ?>
 </div>
-<?php require ('templates/footer.php'); ?>  <!-- Incluye el pie de página -->
+<?php require ('templates/footer.php'); ?> <!-- Incluye el pie de página -->
