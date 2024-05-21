@@ -79,10 +79,10 @@ if (isset($_GET['view'])) {
                     <div class="m-0">
                         <!-- Published date -->
                         <?php $fecha_formateada = date("d-m-Y", strtotime($post['published_on']));
-                        echo "<p class='m-0'>Publicado el " . $fecha_formateada . "</p>"; ?>
+                        echo "<p class='m-0 fs-6'>Publicado el " . $fecha_formateada . "</p>"; ?>
                     </div>
                     <div class="delete-post">
-                        <a class="btn btn-primary btn-sm"
+                        <a class="btn btn-primary btn-sm fs-6"
                             href="?delete-post=<?php echo $post['id']; ?>&hash=<?php echo generate_hash('delete-post-' . $post['id']); ?>">Eliminar
                             Post</a>
 
@@ -111,8 +111,7 @@ if (isset($_GET['view'])) {
 
 
                     </div>
-                    <a href="<?php echo 'detalle-post.php'; ?>">leer
-                        más... →</a>
+                    <a class="fs-6" href="detalle-post.php?id=<?php echo $post['id']; ?>">Leer más... →</a>
                 </div>
                 <hr class="my-4">
         </article>
