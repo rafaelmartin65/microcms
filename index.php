@@ -1,17 +1,21 @@
 <?php require ('init.php'); ?> <!-- Incluye el archivo de inicialización -->
 <?php require ('templates/header.php'); ?> <!-- Incluye el encabezado de la página -->
 
+<?php
+// Verifica si hay un error de login pasado a través de la URL
+$error = isset($_GET['error']) ? $_GET['error'] : '';
+?>
 
 <?php
 // Si se ha enviado un parámetro 'delete-post' en la URL
 if (isset($_GET['delete-post'])) {
     $id = $_GET['delete-post'];  // Obtiene el ID del post a eliminar desde la URL
 
-    if ( ! check_hash( 'delete-post-' . $id, $_GET['hash'] ) ) {
-		die( 'Hackeando, no?' );
-	}
+    if (!check_hash('delete-post-' . $id, $_GET['hash'])) {
+        die('Hackeando, no?');
+    }
     delete_post($id);  // Llama a la función delete_post() para eliminar el post
-    redirect_to( 'index.php' );  // Redirige al usuario a la página principal
+    redirect_to('index.php');  // Redirige al usuario a la página principal
     die();  // Termina la ejecución del script
 }
 
@@ -52,7 +56,7 @@ if (isset($_GET['view'])) {
             <?php
             // Obtener el título del post
             //$titulo_post = $post['title'];
-
+        
             // nombre imagen sin espacios
             $nombre_img = $post['id'] . '.jpg'; ?>
 
@@ -78,36 +82,34 @@ if (isset($_GET['view'])) {
                         echo "<p class='m-0'>Publicado el " . $fecha_formateada . "</p>"; ?>
                     </div>
                     <div class="delete-post">
-                        <a class="btn btn-primary"
+                        <a class="btn btn-primary btn-sm"
                             href="?delete-post=<?php echo $post['id']; ?>&hash=<?php echo generate_hash('delete-post-' . $post['id']); ?>">Eliminar
                             Post</a>
 
-                        <?php if (isset($_GET['delete-post'])) {
-                            $id = $GET['delete-post'];
-
-                            if (!check_hash('delete-post' . $id.$_GET['hash'])){
-                                die('A mi me vas ahackear?');
-                            }else{
-                            delete_post($id);
-                            redirect_to ('index.php');
-                            die();
-                            }
-
+                        <?php
+                        if (isset($_GET['delete-post'])) {
                             // Valida y sanea el ID para asegurarse de que sea un número entero
-                            $id = filter_var($id, FILTER_VALIDATE_INT);
+                            $id = filter_var($_GET['delete-post'], FILTER_VALIDATE_INT);
                             if ($id === false) {
                                 die('ID inválido.');
-                            }else{
-                                // Llama a la función para eliminar el post
-                            delete_post($id);
-
-                            // Redirecciona después de eliminar el post
-                            redirect_to( 'index.php' );  // Redirige al usuario a la página principal
-                            exit;
                             }
-                        }?>
-                            
-                        
+
+                            // Verifica que la función check_hash y el hash proporcionado sean correctos
+                            if (!check_hash('delete-post', $id . $_GET['hash'])) {
+                                die('¿A mí me vas a hackear?');
+                            } else {
+                                // Llama a la función para eliminar el post
+                                delete_post($id);
+
+                                // Redirecciona después de eliminar el post
+                                redirect_to('index.php'); // Redirige al usuario a la página principal
+                                exit;
+                            }
+                        }
+                        ?>
+
+
+
                     </div>
                     <a href="<?php echo 'detalle-post.php'; ?>">leer
                         más... →</a>

@@ -16,20 +16,23 @@
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
         type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+        rel="stylesheet" type="text/css" />
 
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
-    <!--<link href="css/styles.css?v=<?php echo time();?>" rel="stylesheet" />-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--<link href="css/styles.css?v=<?php echo time(); ?>" rel="stylesheet" />-->
     <link rel="stylesheet" href="css/styles.css">
 
-    
+
 </head>
 
 <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="index.php">IA en el Desarrollo Web</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
@@ -39,11 +42,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="new-post.php">Muevo Post</a></li>
+
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">Curiosidades</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">Contacto</a></li>
+                    <!--<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login.php">login</a></li>-->
+                    <?php if (isset($_SESSION['username'])): // Verifica si el usuario está logueado ?>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="new-post.php">Muevo Post</a>
+                        </li>
+                        
+                        <!-- Muestra el nombre del usuario -->
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="logout.php">Logout</a></li>
+                        <li class="nav-item" ><a class="nav-link px-lg-3 py-3 py-lg-4" >Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</a></li>
+                        <!-- Opción de logout -->
+                    <?php else: // Si el usuario no está logueado ?>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login.php">Login</a></li>
+                        <!-- Opción de login -->
+                    <?php endif; ?>
                 </ul>
+
+
             </div>
         </div>
     </nav>

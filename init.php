@@ -1,4 +1,5 @@
 <?php
+session_start(); // Start the session
 
 // Configura la salida de errores por pantalla
 error_reporting(E_ALL);
@@ -17,6 +18,11 @@ $port = '3306';
 $app_db = mysqli_connect( $host, $user, $password, $database, $port );
 if ( $app_db === false ) {
 	die( "Error al conectar con la base de datos" );
+}
+
+if ( isset ( $_GET['logout'])) {
+	unset ($_SESSIOM['user']);
+	redirect_to('index.php');
 }
 
 require( 'inc/posts.php' );
