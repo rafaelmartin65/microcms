@@ -1,6 +1,3 @@
-<?php require __DIR__ ."/../../templates/header.php"; ?>
-<?php require __DIR__ ."/../../templates/footer.php"; ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +45,7 @@
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
 
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">Curiosidades</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contacto.php">Contacto</a></li>
                     <!--<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login.php">login</a></li>-->
                     <?php if (isset($_SESSION['username'])): // Verifica si el usuario está logueado ?>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="new-post.php">Muevo Post</a>
@@ -56,7 +53,7 @@
                         
                         <!-- Muestra el nombre del usuario -->
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo SITE_URL; ?>/?logout=true">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo SITE_URL; ?>/admin">Admin</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo SITE_URL; ?>/admin/index.php">Admin</a></li>
                         <li class="nav-item" ><a class="nav-link px-lg-3 py-3 py-lg-4" >Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</a></li>
                         
                         <!-- Opción de logout -->
