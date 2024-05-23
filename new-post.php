@@ -1,3 +1,4 @@
+<?php require ('config.php'); ?> <!-- Incluye el archivo de configuración -->
 <?php require ('init.php'); ?> <!-- Incluye el archivo init.php que inicializa la aplicación -->
 <?php require ('templates/header.php'); ?> <!-- Incluye el encabezado de la página -->
 

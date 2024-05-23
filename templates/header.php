@@ -1,3 +1,7 @@
+<?php require __DIR__ ."/../../templates/header.php"; ?>
+<?php require __DIR__ ."/../../templates/footer.php"; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,11 +55,14 @@
                         </li>
                         
                         <!-- Muestra el nombre del usuario -->
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="logout.php">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo SITE_URL; ?>/?logout=true">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo SITE_URL; ?>/admin">Admin</a></li>
                         <li class="nav-item" ><a class="nav-link px-lg-3 py-3 py-lg-4" >Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</a></li>
+                        
                         <!-- Opción de logout -->
                     <?php else: // Si el usuario no está logueado ?>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login.php">Login</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<?php echo SITE_URL; ?>/login.php">Login</a></li>
+                        
                         <!-- Opción de login -->
                     <?php endif; ?>
                 </ul>

@@ -89,6 +89,10 @@
   height: 65rem;
 }
 
+#submitSuccessMessage, #submitErrorMessage {
+  display: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;

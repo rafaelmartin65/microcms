@@ -27,3 +27,18 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     });
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('submitSuccessMessage');
+    const errorMessage = document.getElementById('submitErrorMessage');
+
+    form.addEventListener('submit', function(event) {
+        successMessage.style.display = 'block';
+        errorMessage.style.display = 'none';
+
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+        }, 5000);
+    });
+});
